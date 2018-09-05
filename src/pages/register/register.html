@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main_page">
+    <br><br><br>
+  <ion-list>
+    <!-- This is fot the name -->
+    <ion-item class="input_field">
+      <ion-label floating>FULLNAME</ion-label>
+      <ion-input type="text" #fullname></ion-input>
+    </ion-item>
+    <!-- This is fot the email -->
+    <ion-item class="input_field">
+      <ion-label floating>EMAIL</ion-label>
+      <ion-input type="text" #email></ion-input>
+    </ion-item>
+    <!-- This is for the password -->
+    <ion-item class="input_field">
+      <ion-label floating>PASSWORD</ion-label>
+      <ion-input type="password" #password1 ></ion-input>
+    </ion-item>
+     <!-- This is for retype password -->
+     <ion-item class="input_field">
+        <ion-label floating>RETYPE PASSWORD</ion-label>
+        <ion-input type="password" #password2 ></ion-input>
+      </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button block ion-button color="hakuna" (click)="signIn()">Done</button>
+  </div>
+</ion-content>

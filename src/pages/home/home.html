@@ -1,0 +1,19 @@
+<ion-header no-border>
+  <ion-toolbar class="main-toolbar">
+    <button ion-button menuToggle="right" (click)="toogleMenu()"><ion-icon name="menu"></ion-icon></button>
+    <ion-title >{{ username }}</ion-title>
+    <!-- <button ion-buttons end class="add-button" (click)="toogleMenu()"><ion-icon name="add"></ion-icon></button> -->
+    <ion-buttons end>
+      <button  ion-button icon-only>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  The world is your oyster.
+  <p>
+    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+  </p>
+</ion-content>

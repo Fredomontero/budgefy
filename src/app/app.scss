@@ -1,0 +1,21 @@
+//This is for removing the scrollbar of the pages
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.list-ios .item-block .item-inner {
+  border-bottom: 0;
+}
+
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+  border-bottom: 0;
+}
+
+.list-ios .item-block .item-inner{
+  border: 0px;
+}
+
+.list-md .item-block .item-inner {
+  border : 0px;
+}

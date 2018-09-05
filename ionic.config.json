@@ -1,0 +1,7 @@
+{
+  "name": "budgefy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

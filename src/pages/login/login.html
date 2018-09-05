@@ -1,0 +1,22 @@
+<ion-content padding class="main_page">
+  <br><br><br><br>
+  <ion-list>
+    <img id="logo" src="../assets/imgs/logo.png" class="center"/>
+    <br><br>
+    <!-- This is fot the email -->
+    <ion-item class="input_field">
+      <ion-label floating>EMAIL</ion-label>
+      <ion-input type="text" #email></ion-input>
+    </ion-item>
+    <!-- This is for the password -->
+    <ion-item class="input_field">
+      <ion-label floating>PASSWORD</ion-label>
+      <ion-input type="password" #password ></ion-input>
+    </ion-item>
+  </ion-list>
+  
+    <div padding>
+      <button block ion-button color="grass" (click)="login()">Login</button>
+      <button block ion-button color="hakuna" (click)="signup()">Sign Up</button>
+    </div>
+  </ion-content>
