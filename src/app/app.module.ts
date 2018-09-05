@@ -37,7 +37,10 @@ var config = {
     BrowserModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      scrollPadding: false,
+      scrollAssist: false
+    }),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],

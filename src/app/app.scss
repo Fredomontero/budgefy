@@ -19,3 +19,13 @@
 .list-md .item-block .item-inner {
   border : 0px;
 }
+
+//For the space under the menu
+.menu-content{
+  background-color: #004775;
+}
+
+//Override the normal toolbar-title styles
+.menu_title .toolbar-title{
+  margin: 0 !important;
+}

@@ -30,6 +30,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  //login using the firebase authentication and sending the name to the home page
   login(){
     this.auth.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     //this.auth.auth.signInWithEmailAndPassword('alfredo@mail.com', 'holamundo')
@@ -38,7 +39,7 @@ export class LoginPage {
       var r = this.db.object('/users/'+uid+'/').valueChanges().subscribe((d) => {
         this.items = d;
         this.navCtrl.push(HomePage, {
-          username: d.name
+          username: this.items.name
         });
       });
     })
@@ -47,6 +48,7 @@ export class LoginPage {
     });
   }
 
+  //Redirect to Singup page
   signup(){
     this.navCtrl.push(RegisterPage);
   }
@@ -64,6 +66,16 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  //To remove the swipe menu in this page
+  ionViewDidEnter(){
+    this.menu.swipeEnable(false);
+  }
+
+  //This is to let other pages to have access to the menu  
+  ionViewWillLeave(){
+    this.menu.swipeEnable(true);
   }
 
 }

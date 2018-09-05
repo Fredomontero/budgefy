@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, MenuController } from 'ionic-angular';
 
 //Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -27,14 +27,14 @@ export class RegisterPage {
 
    status_messages: string[] = ["Successfully registered user","The name field is required", "The email field is required", "Password don't match", "There was a problem with the server"];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth, private db: AngularFireDatabase, private toast: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth, private db: AngularFireDatabase, private toast: ToastController, private menu:MenuController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  //Connection to Firebase and save the user
+  //Connection to Firebase and save the user and then login
   signIn(){
     this.setUser(this.user);
     var error = this.validateForm(this.user, this.password1, this.password2);
@@ -88,6 +88,16 @@ export class RegisterPage {
     });
   
     toast.present();
+  }
+
+  //To remove the swipe menu in this page
+  ionViewDidEnter(){
+    this.menu.swipeEnable(false);
+  }
+
+  //This is to let other pages to have access to the menu  
+  ionViewWillLeave(){
+    this.menu.swipeEnable(true);
   }
 
 }

@@ -2,10 +2,9 @@
   <ion-toolbar class="main-toolbar">
     <button ion-button menuToggle="right" (click)="toogleMenu()"><ion-icon name="menu"></ion-icon></button>
     <ion-title >{{ username }}</ion-title>
-    <!-- <button ion-buttons end class="add-button" (click)="toogleMenu()"><ion-icon name="add"></ion-icon></button> -->
     <ion-buttons end>
-      <button  ion-button icon-only>
-        <ion-icon name="add"></ion-icon>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon class="add-button" name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>

@@ -1,1 +1,29 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar color="suede">
+        <ion-title class="menu_title">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="menu-content">
+      <ion-list>
+        <button ion-item (click)="openSettingsPage()" color="suede">
+            <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+            Configuración de la cuenta
+        </button>
+        <button ion-item (click)="openPaymentPage()" color="suede">
+            <ion-icon ios="ios-card" md="md-card"></ion-icon>
+            Métodos de pago
+        </button>
+        <button ion-item (click)="openStatisticsPage()" color="suede">
+            <ion-icon ios="ios-stats" md="md-stats"></ion-icon>
+            Tus estadísticas
+        </button>
+        <button ion-item (click)="logout()" color="suede">
+            <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
+            Cerrar sesión
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav id="nav" #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
