@@ -7,7 +7,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+//Pages requires
 import { LoginPage } from '../pages/login/login';
+import { PaymentPage } from '../pages/payment/payment';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,6 +26,12 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  //Function to redirect to payment page
+  openPaymentPage(){
+    this.menu.close();
+    this.navCtrl.push(PaymentPage);
   }
 
   //Function for loging out

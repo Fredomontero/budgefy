@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Payment Methods</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let method of payment_list" >
+      <!-- For visa -->
+      <ion-item *ngIf="method.type == 1">
+        <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> ●●●● {{ method.description | slice:11:15 }} 
+      </ion-item>
+      <!-- For mastercard -->
+      <ion-item *ngIf="method.type == 2">
+        <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> ●●●● {{ method.description | slice:11:15 }} 
+      </ion-item>
+      <!-- For others -->
+      <ion-item *ngIf="method.type > 2">
+          <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> {{ method.description }} 
+        </ion-item>
+      <ion-item-options side="left">
+          <button ion-button color="danger" (click)="deleteCard(card)">
+            <ion-icon name="trash"></ion-icon>
+            Borrar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+  <button block ion-button color="suede" (click)="addNewMethod()"> + Add Payment Method </button>
+</ion-content>
