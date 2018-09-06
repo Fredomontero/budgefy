@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 
+import { AddtransactionPage } from '../addtransaction/addtransaction';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -30,7 +32,7 @@ export class HomePage {
 
   //function to add more expenses
   addItem(){
-    console.log("Deseas ingresar un gasto?");
+    this.navCtrl.push(AddtransactionPage);
   }
 
 }

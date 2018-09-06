@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { AddtransactionPage } from '../pages/addtransaction/addtransaction';
 
 //Firebase imports
 import { AngularFireModule } from 'angularfire2';
@@ -31,7 +32,8 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    AddtransactionPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    AddtransactionPage
   ],
   providers: [
     StatusBar,

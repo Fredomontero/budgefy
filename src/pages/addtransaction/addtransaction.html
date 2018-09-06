@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Transaction</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main_page">
+    <br><br><br>
+  <ion-list>
+    <!-- This is fot the name -->
+    <ion-item class="input_field">
+      <ion-label floating>CONCEPT</ion-label>
+      <ion-input type="text" #concept></ion-input>
+    </ion-item>
+    <!-- This is fot the email -->
+    <ion-item class="input_field">
+      <ion-label floating>AMOUNT</ion-label>
+      <ion-input type="text" #amount></ion-input>
+    </ion-item>
+    <br>
+    <!-- This is for the user type -->
+    <ion-item class="input_field">
+      <ion-label>SELECT PAYMENT</ion-label>
+      <ion-select [(ngModel)]="type" (ionChange)="getType(type);">
+        <ion-option value="0">Asesorado</ion-option>
+        <ion-option value="1">Asesor</ion-option>
+        <ion-option value="2">Ambos</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button block ion-button color="hakuna" (click)="addTransaction()">Done</button>
+  </div>
+</ion-content>

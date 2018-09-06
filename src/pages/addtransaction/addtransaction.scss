@@ -1,0 +1,31 @@
+page-addtransaction {
+
+}
+
+.input_field{
+    background-color:rgba(0,0,0,0);
+    color: #FFF;
+    font-size: 1.2rem;
+    border-bottom: #D3475A solid 1px !important;
+    min-width: 90% !important;
+    max-width: 90% !important;
+    padding-left: 5px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-ios > .item-block:first-child {
+    border-top: none;
+}
+
+.item item-block item-ios item-select{
+    min-width: 90% !important;
+    max-width: 90% !important;
+    padding-left: 5px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-wrapper .button-inner{
+    color: #304059 !important;
+}
