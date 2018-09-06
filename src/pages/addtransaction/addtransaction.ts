@@ -69,7 +69,7 @@ export class AddtransactionPage {
     transaction.concept = this.concept.value;
     transaction.amount = this.amount.value;
     transaction.paymentType = this.payment_type;
-    transaction.datetime = new Date();
+    transaction.datetime = new Date().toLocaleString()
   }
 
   //Function to get the type of user (the value will change everytime a different value is selected)
