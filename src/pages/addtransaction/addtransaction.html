@@ -22,9 +22,13 @@
     <ion-item class="input_field">
       <ion-label>SELECT PAYMENT</ion-label>
       <ion-select [(ngModel)]="type" (ionChange)="getType(type);">
-        <ion-option value="0">Asesorado</ion-option>
+        <ion-option *ngFor="let method of payment_list" value="{{method.type}}" (ionChange)="getType(type);">
+          <p  *ngIf="method.type < 3">●●●● {{ method.description | slice:11:15 }}</p>
+          <p  *ngIf="method.type > 2">{{ method.description }}</p>
+        </ion-option>
+        <!-- <ion-option value="0">Asesorado</ion-option>
         <ion-option value="1">Asesor</ion-option>
-        <ion-option value="2">Ambos</ion-option>
+        <ion-option value="2">Ambos</ion-option> -->
       </ion-select>
     </ion-item>
   </ion-list>

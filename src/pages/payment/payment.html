@@ -9,17 +9,20 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let method of payment_list" >
-      <!-- For visa -->
-      <ion-item *ngIf="method.type == 1">
-        <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> ●●●● {{ method.description | slice:11:15 }} 
+      <!-- For visa and mastercard-->
+      <ion-item *ngIf="method.type < 3">
+        <img src="../assets/imgs/{{method.type}}.png" class="card_item ">
+        <p class="description_tag"> ●●●● {{ method.description | slice:11:15 }}</p> 
       </ion-item>
       <!-- For mastercard -->
-      <ion-item *ngIf="method.type == 2">
-        <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> ●●●● {{ method.description | slice:11:15 }} 
-      </ion-item>
+      <!-- <ion-item *ngIf="method.type == 2">
+        <img src="../assets/imgs/{{method.type}}.png" class="card_item ">
+        <p class="description_tag"> ●●●● {{ method.description | slice:11:15 }}</p>  
+      </ion-item> -->
       <!-- For others -->
       <ion-item *ngIf="method.type > 2">
-          <img src="../assets/imgs/{{method.type}}.png" class="card_item  "> {{ method.description }} 
+          <img src="../assets/imgs/{{method.type}}.png" class="card_item "> 
+          <p class="description_tag"> {{ method.description }}</p> 
         </ion-item>
       <ion-item-options side="left">
           <button ion-button color="danger" (click)="deleteCard(card)">

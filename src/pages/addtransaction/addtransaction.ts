@@ -22,6 +22,8 @@ export class AddtransactionPage {
    errorMessage: string;
    payment_type;
    items;
+   payment_list;
+   user_id;
 
    //Litheral object constructor
   transaction = {concept : '', amount : '', paymentType : 0};
@@ -29,6 +31,16 @@ export class AddtransactionPage {
    status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private auth: AngularFireAuth, public alertCtrl: AlertController, private db: AngularFireDatabase,  private toast: ToastController) {
+    this.user_id = this.auth.auth.currentUser.uid;
+    this.loadPaymentMethods();
+  }
+
+  //function to load the cards
+  loadPaymentMethods(){
+    this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
+      console.log(d);
+      this.payment_list = d;
+    });
   }
 
   ionViewDidLoad() {

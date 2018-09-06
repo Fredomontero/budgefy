@@ -20,7 +20,7 @@ export class PaymentPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, private auth: AngularFireAuth, private db: AngularFireDatabase) {
     this.user_id = this.auth.auth.currentUser.uid;
-    this.loadBankCards();
+    this.loadPaymentMethods();
   }
 
   ionViewDidLoad() {
@@ -28,7 +28,7 @@ export class PaymentPage {
   }
 
   //function to load the cards
-  loadBankCards(){
+  loadPaymentMethods(){
     this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
       console.log(d);
       this.payment_list = d;
