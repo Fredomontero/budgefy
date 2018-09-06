@@ -23,7 +23,7 @@ export class RegisterPage {
   @ViewChild('password2') password2;
 
    //Litheral object constructor
-   user = {name : '', email : ''};
+   user = {name : '', email : '', num_transactions: 0};
 
    status_messages: string[] = ["Successfully registered user","The name field is required", "The email field is required", "Password don't match", "There was a problem with the server"];
 
@@ -63,6 +63,7 @@ export class RegisterPage {
   setUser(user){
     user.name = this.fullname.value;
     user.email = this.email.value;
+    user.num_transactions = 0;
   }
 
   //Verifying that the form is filled properly

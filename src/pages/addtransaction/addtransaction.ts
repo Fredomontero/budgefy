@@ -27,13 +27,14 @@ export class AddtransactionPage {
    user_id;
 
    //Litheral object constructor
-  transaction = {concept : '', amount : '', paymentType : 0, datetime: ''};
+  transaction = {concept : '', amount : '', paymentType : 0, datetime: '', id: 0};
 
    status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private auth: AngularFireAuth, public alertCtrl: AlertController, private db: AngularFireDatabase,  private toast: ToastController) {
     this.user_id = this.auth.auth.currentUser.uid;
     this.loadPaymentMethods();
+    this.loadUser();
   }
 
   //function to load the cards
@@ -46,6 +47,13 @@ export class AddtransactionPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddtransactionPage');
+  }
+
+  //Function to load the user information
+  loadUser(){
+      var r = this.db.object('/users/'+this.user_id+'/').valueChanges().subscribe((d) => {
+        this.items = d;
+      });
   }
 
   //To remove the swipe menu in this page
@@ -62,10 +70,15 @@ export class AddtransactionPage {
   addTransaction(){
     this.setTransaction(this.transaction);
     console.log(this.transaction);
+    //Store the transaction in the database
+    this.db.object('/users/'+this.user_id+'/transactions/'+this.transaction.id+'/').set(this.transaction);
+    //Update the num_transactions of the user
+    this.db.list('/users/').update('/'+this.user_id+'/',{num_transactions:this.transaction.id + 1});
   }
 
   //Setting the texfield values to the properties of our object
   setTransaction(transaction){
+    transaction.id = this.items.num_transactions;
     transaction.concept = this.concept.value;
     transaction.amount = this.amount.value;
     transaction.paymentType = this.payment_type;
