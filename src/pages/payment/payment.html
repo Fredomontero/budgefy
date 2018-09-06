@@ -14,12 +14,6 @@
         <img src="../assets/imgs/{{method.type}}.png" class="card_item ">
         <p class="description_tag"> ●●●● {{ method.description | slice:11:15 }}</p> 
       </ion-item>
-      <!-- For mastercard -->
-      <!-- <ion-item *ngIf="method.type == 2">
-        <img src="../assets/imgs/{{method.type}}.png" class="card_item ">
-        <p class="description_tag"> ●●●● {{ method.description | slice:11:15 }}</p>  
-      </ion-item> -->
-      <!-- For others -->
       <ion-item *ngIf="method.type > 2">
           <img src="../assets/imgs/{{method.type}}.png" class="card_item "> 
           <p class="description_tag"> {{ method.description }}</p> 

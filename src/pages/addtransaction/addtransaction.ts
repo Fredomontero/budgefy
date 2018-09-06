@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, MenuController, ToastController } from 'ionic-angular';
 
+
 //This is what we need from firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -26,7 +27,7 @@ export class AddtransactionPage {
    user_id;
 
    //Litheral object constructor
-  transaction = {concept : '', amount : '', paymentType : 0};
+  transaction = {concept : '', amount : '', paymentType : 0, datetime: ''};
 
    status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
@@ -68,6 +69,7 @@ export class AddtransactionPage {
     transaction.concept = this.concept.value;
     transaction.amount = this.amount.value;
     transaction.paymentType = this.payment_type;
+    transaction.datetime = new Date();
   }
 
   //Function to get the type of user (the value will change everytime a different value is selected)
