@@ -17,6 +17,7 @@ export class HomePage {
   transaction_list;
   student;
   student_id;
+  total: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private auth: AngularFireAuth, private menu: MenuController) {
     this.username = navParams.get('username');
@@ -28,7 +29,11 @@ export class HomePage {
   loadTransactions(){
     this.db.list('/users/'+this.student_id+'/transactions/').valueChanges().subscribe((d) => {
       this.transaction_list = d;
-      console.log(this.transaction_list);
+      let i = 0;
+      for(i = 0; i<this.transaction_list.length; i++){
+        let amount = parseInt(this.transaction_list[i].amount);
+        this.total = this.total+amount;
+      }
     });
   }
 

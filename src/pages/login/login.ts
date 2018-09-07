@@ -27,7 +27,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
   }
 
   //login using the firebase authentication and sending the name to the home page

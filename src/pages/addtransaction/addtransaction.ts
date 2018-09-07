@@ -40,13 +40,12 @@ export class AddtransactionPage {
   //function to load the cards
   loadPaymentMethods(){
     this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
-      console.log(d);
       this.payment_list = d;
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddtransactionPage');
+    
   }
 
   //Function to load the user information
@@ -69,7 +68,6 @@ export class AddtransactionPage {
   //function to add transaction
   addTransaction(){
     this.setTransaction(this.transaction);
-    console.log(this.transaction);
     //Store the transaction in the database
     this.db.object('/users/'+this.user_id+'/transactions/'+this.transaction.id+'/').set(this.transaction);
     //Update the num_transactions of the user
