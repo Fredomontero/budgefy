@@ -1,5 +1,14 @@
 page-home {
+    ion-label{  
+        padding: 0px !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+}
 
+.list-header-md{
+    font-weight: bold;
+    color: black;
 }
 
 .main-toolbar .toolbar-title{
@@ -17,4 +26,28 @@ page-home {
 
 .item-md.item-block .item-inner {
     border-bottom: 0;
+}
+
+.product_title{
+    font-weight: bold !important;
+    margin-top: 2px !important;
+    color: #004775 !important;
+}
+
+.item-md h2 {
+    margin: 2px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.item-md h3{
+    font-weight: bold;
+}
+
+.item-wrapper{
+    overflow-y: visible !important;
+}
+
+.item .item-block .item-md{
+    overflow-y: visible !important;
 }
