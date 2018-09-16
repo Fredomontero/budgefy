@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add payment method</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main_page">
+    <br><br><br>
+  <ion-list>
+    <!-- This is fot the name of the method -->
+    <ion-item class="input_field">
+      <ion-label floating>NAME</ion-label>
+      <ion-input type="text" #methodname></ion-input>
+    </ion-item>
+    <!-- This is for the method type -->
+    <ion-item class="input_field">
+      <ion-label class="modal_alert-reg">METHOD TYPE</ion-label>
+      <ion-select [(ngModel)]="type" (ionChange)="getType(type);">
+        <ion-option value="0">CASH</ion-option>
+        <ion-option value="1">CREDITCARD</ion-option>
+        <ion-option value="2">DEBITCARD</ion-option>
+        <ion-option value="3">MARKETCOUPONS</ion-option>
+      </ion-select>
+    </ion-item>
+    <!-- This is for the account number -->
+    <ion-item *ngIf="type > 0" class="input_field">
+      <ion-label floating>ACCOUNT NUMBER</ion-label>
+      <ion-input type="number" #accountnumber ></ion-input>
+    </ion-item>
+    <!-- This is fot the balance -->
+    <ion-item class="input_field">
+      <ion-label floating>BALANCE</ion-label>
+      <ion-input type="number" #balance></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button block ion-button color="hakuna" (click)="signIn()">Done</button>
+  </div>
+</ion-content>
