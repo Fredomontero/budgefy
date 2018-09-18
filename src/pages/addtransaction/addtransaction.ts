@@ -21,13 +21,13 @@ export class AddtransactionPage {
    @ViewChild('concept') concept;
    @ViewChild('amount') amount;
    errorMessage: string;
-   payment_type;
+   payment_id;
    items;
    payment_list;
    user_id;
 
    //Litheral object constructor
-  transaction = {concept : '', amount : '', paymentType : 0, datetime: '', id: 0};
+  transaction = {concept : '', amount : 0, paymentId : 0, datetime: '', id: 0};
 
    status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
@@ -68,10 +68,14 @@ export class AddtransactionPage {
   //function to add transaction
   addTransaction(){
     this.setTransaction(this.transaction);
+    var paymnet_balance = this.payment_list[this.transaction.paymentId - 1].balance;
+    var transaction_amount = this.transaction.amount;
     //Store the transaction in the database
     this.db.object('/users/'+this.user_id+'/transactions/'+this.transaction.id+'/').set(this.transaction);
     //Update the num_transactions of the user
     this.db.list('/users/').update('/'+this.user_id+'/',{num_transactions:this.transaction.id + 1});
+    //Update the balance of the used payment method
+    this.db.list('/users/').update('/'+this.user_id+'/payment/'+this.transaction.paymentId+'/',{balance: paymnet_balance - transaction_amount});
   }
 
   //Setting the texfield values to the properties of our object
@@ -79,13 +83,13 @@ export class AddtransactionPage {
     transaction.id = this.items.num_transactions;
     transaction.concept = this.concept.value;
     transaction.amount = this.amount.value;
-    transaction.paymentType = this.payment_type;
+    transaction.paymentId = this.payment_id;
     transaction.datetime = new Date().toLocaleString()
   }
 
   //Function to get the type of user (the value will change everytime a different value is selected)
-  getType(type){
-    this.payment_type = type;
+  getPaymentId(id){
+    this.payment_id = id;
   }
 
   //Verifying that the form is filled properly

@@ -21,10 +21,9 @@
     <!-- This is for the user type -->
     <ion-item class="input_field">
       <ion-label>SELECT PAYMENT</ion-label>
-      <ion-select [(ngModel)]="type" (ionChange)="getType(type);">
-        <ion-option *ngFor="let method of payment_list" value="{{method.type}}" (ionChange)="getType(type);">
-          <p  *ngIf="method.type < 3">●●●● {{ method.description | slice:11:15 }}</p>
-          <p  *ngIf="method.type > 2">{{ method.description }}</p>
+      <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
+        <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
+          <p >{{ method.name }}</p>
         </ion-option>
       </ion-select>
     </ion-item>
