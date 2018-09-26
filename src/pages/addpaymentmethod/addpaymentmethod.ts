@@ -42,7 +42,6 @@ export class AddpaymentmethodPage {
   loadPaymentMethods(){
     this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
       this.payment_list = d;
-      console.log("There number of methods is: ", this.payment_list.length);
     });
   }
 
@@ -51,7 +50,7 @@ export class AddpaymentmethodPage {
   }
 
   //Connection to Firebase and save the user
-  signIn(){
+  addMethod(){
     this.setMethod(this.method);
     var error = this.validateForm(this.method);
     if(error == 0){
@@ -73,10 +72,16 @@ export class AddpaymentmethodPage {
   setMethod(method){
     method.id = this.payment_list.length + 1;
     method.name = this.method_name.value;
-    method.type = this.method_type;
     method.balance = this.balance.value;
-    if(this.method.type > 0){
+    method.status = "active";
+    method.type = this.method_type;
+    if(this.method_type > 2){
       this.method.account_number = this.account_number.value;
+      //get the first char of the account number
+      var type = parseInt(this.account_number.value.substring(0,1));
+      if( this.method_type == 4)
+        type += 10;;
+      this.method.type = type;
     }
     method.status = "active";
   }

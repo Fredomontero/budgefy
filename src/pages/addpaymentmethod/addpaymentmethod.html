@@ -17,14 +17,14 @@
     <ion-item class="input_field">
       <ion-label class="modal_alert-reg">METHOD TYPE</ion-label>
       <ion-select [(ngModel)]="type" (ionChange)="getType(type);">
-        <ion-option value="0">CASH</ion-option>
-        <ion-option value="1">CREDITCARD</ion-option>
-        <ion-option value="2">DEBITCARD</ion-option>
-        <ion-option value="3">MARKETCOUPONS</ion-option>
+        <ion-option value="1">CASH</ion-option>
+        <ion-option value="2">MARKETCOUPONS</ion-option>
+        <ion-option value="3">DEBITCARD</ion-option>
+        <ion-option value="4">CREDITCARD</ion-option>
       </ion-select>
     </ion-item>
     <!-- This is for the account number -->
-    <ion-item *ngIf="type > 0" class="input_field">
+    <ion-item *ngIf="type > 2" class="input_field">
       <ion-label floating>ACCOUNT NUMBER</ion-label>
       <ion-input type="number" #accountnumber ></ion-input>
     </ion-item>
@@ -36,6 +36,6 @@
   </ion-list>
 
   <div padding>
-    <button block ion-button color="hakuna" (click)="signIn()">Done</button>
+    <button block ion-button color="hakuna" (click)="addMethod()">Done</button>
   </div>
 </ion-content>

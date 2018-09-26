@@ -14,20 +14,29 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class HomePage {
 
   username: string;
+  payment_list;
   transaction_list;
   student;
-  student_id;
+  user_id;
   total: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private auth: AngularFireAuth, private menu: MenuController) {
     this.username = navParams.get('username');
-    this.student_id = this.auth.auth.currentUser.uid;
+    this.user_id = this.auth.auth.currentUser.uid;
+    this.loadPaymentMethods();
     this.loadTransactions();
+  }
+
+  //function to load the cards
+  loadPaymentMethods(){
+    this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
+      this.payment_list = d;
+    });
   }
 
   //Function to load the transactions of the user and display them
   loadTransactions(){
-    this.db.list('/users/'+this.student_id+'/transactions/').valueChanges().subscribe((d) => {
+    this.db.list('/users/'+this.user_id+'/transactions/').valueChanges().subscribe((d) => {
       this.transaction_list = d;
       let i = 0;
       for(i = 0; i<this.transaction_list.length; i++){

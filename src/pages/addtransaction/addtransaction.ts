@@ -83,7 +83,7 @@ export class AddtransactionPage {
     transaction.id = this.items.num_transactions;
     transaction.concept = this.concept.value;
     transaction.amount = this.amount.value;
-    transaction.paymentId = this.payment_id;
+    transaction.paymentId = this.payment_list[this.payment_id - 1].id;
     transaction.datetime = new Date().toLocaleString()
   }
 

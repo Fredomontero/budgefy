@@ -26,13 +26,12 @@ export class PaymentPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PaymentPage');
+
   }
 
   //function to load the cards
   loadPaymentMethods(){
     this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
-      console.log(d);
       this.payment_list = d;
     });
   }

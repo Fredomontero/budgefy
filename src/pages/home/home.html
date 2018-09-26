@@ -19,7 +19,7 @@
       <ion-item-sliding *ngFor="let transcation of transaction_list" >
         <ion-item>
           <ion-avatar item-start>
-            <img src="../assets/imgs/image_{{transcation.paymentType}}.png">
+            <img src="../assets/imgs/image_{{ payment_list[transcation.paymentId-1].type % 10 }}.png">
           </ion-avatar>
           <h2 class="product_title">Product: {{ transcation.concept }}</h2>
           <h3 class="product_amount">Amount: {{ transcation.amount | currency }}</h3>
