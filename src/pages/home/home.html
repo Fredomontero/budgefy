@@ -27,8 +27,37 @@
         </ion-item>
       </ion-item-sliding>
     </ion-list>
-    <hr>
-    <ion-item >
-      <h2>Total: {{ total | currency }}</h2>
-    </ion-item>
+    
+    <!-- Test -->
+    <div padding>
+      <ion-segment class="home_segment" [(ngModel)]="type">
+        <ion-segment-button value="expenses">
+          Expenses
+        </ion-segment-button>
+        <ion-segment-button value="balance">
+          Balance
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="type">
+      <div *ngSwitchCase="'expenses'">
+        <ion-item >
+          <h2 class="total_expenses" >Total: {{ total | currency }}</h2>
+        </ion-item>
+      </div>
+      <div *ngSwitchCase="'balance'">
+          <ion-list>
+            <ion-item-sliding *ngFor="let method of payment_list" >
+              <ion-item>
+                <ion-avatar class="payment_methods" item-start>
+                  <img src="../assets/imgs/img_{{ method.type % 10 }}.png">
+                </ion-avatar>
+                <h2 class="product_title">Payment method: {{ method.name }}</h2>
+                <h3 class="product_amount">Balance: {{ method.balance | currency }}</h3>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list>
+      </div>
+    </div>
 </ion-content>

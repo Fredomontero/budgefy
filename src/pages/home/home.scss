@@ -51,3 +51,39 @@ page-home {
 .item .item-block .item-md{
     overflow-y: visible !important;
 }
+
+.item-inner{
+    border-bottom: none !important;
+}
+
+.segment-button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    height: 3.2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #004775 !important;
+    font-size: 1.3rem;
+    line-height: 3rem;
+    color: #fff;
+    background-color: transparent;
+}
+
+.segment-button.segment-activated {
+    color: #fff;
+    background-color: #004775 !important;
+    opacity: 1;
+    -webkit-transition: 100ms all linear;
+    transition: 100ms all linear;
+}
+
+.total_expenses{
+    color: red;
+}
+
+.payment_methods img{
+    border-radius: 0px !important;
+}
