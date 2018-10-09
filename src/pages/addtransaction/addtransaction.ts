@@ -22,13 +22,15 @@ export class AddtransactionPage {
    @ViewChild('amount') amount;
    errorMessage: string;
    payment_id;
+   transaction_type;
    items;
    payment_list;
-   user_id;
+   user_id; 
 
    //Litheral object constructor
-  transaction = {concept : '', amount : 0, paymentId : 0, datetime: '', id: 0};
+   transaction = {type: 0, concept : '', amount : 0, paymentId : 0, datetime: '', id: 0};
 
+   transaction_types: string[] = ["INCOME", "CASH WITHDRAWAL", "EXPENSE"];
    status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private auth: AngularFireAuth, public alertCtrl: AlertController, private db: AngularFireDatabase,  private toast: ToastController) {
@@ -90,6 +92,11 @@ export class AddtransactionPage {
   //Function to get the type of user (the value will change everytime a different value is selected)
   getPaymentId(id){
     this.payment_id = id;
+  }
+  //Function to get the transaction type (the value will change everytime a different value is selected)
+  getTransactionType(transaction_type){
+    this.transaction_type = transaction_type;
+    console.log("The transaction type is: ",this.transaction_type);
   }
 
   //Verifying that the form is filled properly
