@@ -23,6 +23,7 @@
   <ion-col>
       <p class="transaction_header" text-center>{{ transaction_types[transaction_type] }}</p>
   </ion-col>
+
   <!-- This is for the incomes -->
   <ion-list *ngIf="transaction_type == 0">
     <!-- This is for the user type -->
@@ -30,7 +31,7 @@
       <ion-label>SELECT PAYMENT</ion-label>
       <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
         <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
-          <p >{{ method.name }}</p>
+          <p>{{ method.name }}</p>
         </ion-option>
       </ion-select>
     </ion-item>
@@ -40,15 +41,18 @@
       <ion-input type="text" #amount></ion-input>
     </ion-item>
   </ion-list>
+
   <!-- This is for the cash withdrawal -->
   <ion-list *ngIf="transaction_type == 1">
     <!-- This is for the user type -->
     <ion-item class="input_field">
       <ion-label>SELECT PAYMENT</ion-label>
       <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
-        <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
-          <p >{{ method.name }}</p>
-        </ion-option>
+        <div *ngFor="let method of payment_list">
+          <ion-option *ngIf="method.type > 2" value="{{method.id}}" (ionChange)="getPaymentId(id);">
+            <p>{{ method.name }}</p>
+          </ion-option>
+        </div>
       </ion-select>
     </ion-item>
     <!-- This is fot the amount -->
@@ -57,6 +61,7 @@
       <ion-input type="text" #amount></ion-input>
     </ion-item>
   </ion-list>
+
   <!-- This is for the expenses -->
   <ion-list class="expenses_list" *ngIf="transaction_type == 2">
     <!-- This is fot the name -->

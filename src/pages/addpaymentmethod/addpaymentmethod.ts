@@ -27,7 +27,6 @@ export class AddpaymentmethodPage {
 
   //Litheral object constructor
   method = {id : 0 , name : '', type : 0, balance: 0, account_number: 0, status: 'active'};
-
   status_messages: string[] = ["Successfully registered method","The name field is required", "The balance field is required", "The account number field is required", "There was a problem with the server"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth, private db: AngularFireDatabase, private toast: ToastController) {

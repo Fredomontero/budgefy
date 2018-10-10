@@ -40,8 +40,10 @@ export class HomePage {
       this.transaction_list = d;
       let i = 0;
       for(i = 0; i<this.transaction_list.length; i++){
-        let amount = parseInt(this.transaction_list[i].amount);
-        this.total = this.total+amount;
+        if(this.transaction_list[i].type == 2){
+          let amount = parseInt(this.transaction_list[i].amount);
+          this.total = this.total+amount;
+        }
       }
     });
   }
