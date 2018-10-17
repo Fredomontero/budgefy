@@ -6,15 +6,26 @@ page-home {
     }
 }
 
+.main_container{
+    background-color: #e6e8fa;
+}
+
 .main_content{
     .scroll-content{
         padding: 0;
     }
+
+    background-color: #e6e8fa;
 }
 
-.list-header-md{
-    font-weight: bold;
+.list_header{
     color: black;
+    background-color: white !important;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0px !important;
+    height: 20px !important;
+    font-weight: bold;
+    
 }
 
 .main-toolbar .toolbar-title{

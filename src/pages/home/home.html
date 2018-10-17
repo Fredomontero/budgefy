@@ -10,11 +10,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="main_container">
   <ion-content class="main_content">
-    <ion-list-header>
-      <h1>Last transactions</h1>
-    </ion-list-header>
+    <div class="list_header" padding>
+      Last transactions
+    </div>
     <ion-list>
       <div *ngFor="let transaction of transaction_list">
         <ion-item-sliding *ngIf="transaction.type > 1">
@@ -62,4 +62,7 @@
           </ion-list>
       </div>
     </div>
+
+    <flow-bar></flow-bar>
+    
 </ion-content>

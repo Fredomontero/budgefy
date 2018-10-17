@@ -32,9 +32,8 @@ export class LoginPage {
 
   //login using the firebase authentication and sending the name to the home page
   login(){
-    // this.auth.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
-    this.auth.auth.signInWithEmailAndPassword("chris@mail.com", "holamundo")
-    //this.auth.auth.signInWithEmailAndPassword('alfredo@mail.com', 'holamundo')
+    this.auth.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
+    // this.auth.auth.signInWithEmailAndPassword("chris@mail.com", "holamundo")
     .then(data => {
       let uid = this.auth.auth.currentUser.uid;
       var r = this.db.object('/users/'+uid+'/').valueChanges().subscribe((d) => {

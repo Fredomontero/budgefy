@@ -20,6 +20,9 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/dat
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//Components
+import { FlowBarComponent } from '../components/flow-bar/flow-bar';
+
 var config = {
   apiKey: "AIzaSyAq-hnJjVK-vz5W4h6yyDh84jR9vMWVAIk",
   authDomain: "budgefy-9c0df.firebaseapp.com",
@@ -37,7 +40,8 @@ var config = {
     RegisterPage,
     AddtransactionPage,
     PaymentPage,
-    AddpaymentmethodPage
+    AddpaymentmethodPage,
+    FlowBarComponent
   ],
   imports: [
     BrowserModule,
