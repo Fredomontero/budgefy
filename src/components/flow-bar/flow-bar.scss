@@ -3,6 +3,62 @@ flow-bar {
     .flow_bar_container{
         width: 100%;
         background-color: white;
+        border-radius: 7px;
+        padding-top: 10px;
+    }
+
+    .balance_header{
+        font-size: 18px;
+        color: #888888;
+    }
+
+    .flow_bar_header{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-weight: bold;
+    }
+
+    .col_bar{
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .income{
+        .amount{
+            color: green;
+        }
+    }
+
+    .income_bar{
+        border-radius: 5px;
+        background-color: #ededed;
+        height: 20px;
+    }
+
+    .income_fill{
+        border-radius: 5px;
+        height: 20px;
+        background-color: green;
+        width: 50%;
+    }
+
+    .expenses{
+        .amount{
+            color: red;
+        }
+    }
+
+    .expenses_bar{
+        border-radius: 5px;
+        background-color: #ededed;
+        height: 20px;
+    }
+
+    .expenses_fill{
+        border-radius: 5px;
+        height: 20px;
+        background-color: red;
+        width: 30%;
     }
 
 }

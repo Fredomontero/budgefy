@@ -1,3 +1,31 @@
-<div class="flow_bar_container" padding>
-  {{text}}
-</div>
+<ion-grid>
+  <div class="flow_bar_container">
+    <ion-row padding-horizontal>
+      <ion-col col-12 class="flow_bar_header" >Cash Flow</ion-col>
+      <ion-col class="balance_header" col-12 text-center> MXN 0 </ion-col>
+    </ion-row>
+    <!-- income bar -->
+    <ion-row class="income">
+      <ion-col col-6 class="header_text" text-left>Income</ion-col>
+      <ion-col col-6 class="amount" text-right>MXN 0</ion-col>
+      <ion-col col-12 class="col_bar">
+        <div class="income_bar">
+          <div class="income_fill"></div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <br>
+    <!-- expenses bar -->
+    <ion-row class="expenses">
+      <ion-col col-6 class="header_text" text-left>Expenses</ion-col>
+      <ion-col col-6 class="amount" text-right>MXN 0</ion-col>
+      <ion-col col-12 class="col_bar">
+        <div class="expenses_bar">
+          <div class="expenses_fill"></div>
+        </div>
+      </ion-col>
+      <br>
+    </ion-row>
+    <br>
+  </div>
+</ion-grid>
