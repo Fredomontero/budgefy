@@ -1,5 +1,42 @@
 page-addtransaction {
 
+    .main_title{
+        .toolbar-title{
+            margin-right: 0px !important;
+        }
+    }
+
+    .type_button{
+        border: 1px solid !important;
+        border-color: rgba($color: #000, $alpha: 0.4) !important;
+        color: white !important;
+        background-color: #3e5272 !important;
+    }
+
+    .segment-activated{
+        background-color: #304059 !important;
+    }
+
+    .amount_money{
+        height: 25% !important;
+        background-color: #3e5272 !important;
+    }
+
+    .amount{
+        color: #FFF;
+        height: 100% !important;
+        display: block !important;
+        vertical-align: middle !important;
+    }
+
+    .amount_p{
+        
+    }
+
+    .currency{
+        color: #FFF;
+    }
+
 }
 
 .input_field{
