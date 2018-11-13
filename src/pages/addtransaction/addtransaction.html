@@ -25,30 +25,21 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-  <br><br>
+  <div class="amount_input">
+    <div class="amount"><p>0</p></div>
+    <div class="currency"><p>MXN</p></div>
+  </div>
   <!-- INCOME -->
   <div [ngSwitch]="transaction_type">
-    <ion-list *ngSwitchCase="'income'">
-      <br>
-      <!-- This is for the user type -->
-        <ion-item class="input_field">
-        <ion-label>SELECT PAYMENT</ion-label>
-        <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
-          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
-            <p>{{ method.name }}</p>
-          </ion-option>
-        </ion-select>
-      </ion-item>
-      <!-- This is fot the amount -->
-      <ion-item class="input_field">
-        <ion-label floating>AMOUNT</ion-label>
-        <ion-input type="text" #amount></ion-input>
-      </ion-item>
-      <!-- Done button -->
-      <div padding>
-        <button block ion-button color="hakuna" (click)="addTransaction()">Done</button>
-      </div>
-    </ion-list>
+    <div class="income_options">
+      <ion-label>SELECT PAYMENT</ion-label>
+      <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
+        <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
+          <p>{{ method.name }}</p>
+        </ion-option>
+      </ion-select>
+    </div>
+    <!-- ICOME END -->
     <!-- EXPENSES -->
     <ion-list *ngSwitchCase="'expenses'">
       <!-- This is fot the name -->

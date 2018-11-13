@@ -22,19 +22,35 @@ page-addtransaction {
         background-color: #3e5272 !important;
     }
 
-    .amount{
+    .amount_input{
+        height: 30% !important;
+        background-color: #004775 !important;
         color: #FFF;
-        height: 100% !important;
-        display: block !important;
-        vertical-align: middle !important;
+        display: flex;
     }
 
-    .amount_p{
-        
+    .amount{
+        width: 80% !important;
+        text-align: right;
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        font-size: 50px !important;
+        font-weight: 100;
     }
 
     .currency{
+        width: 20% !important;
+        padding-left: 3%;
+        text-align: left;
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        font-size: 20px;
+        font-weight: 100;
+    }
+
+    .income_options{
         color: #FFF;
+        border: 2px solid black;
     }
 
 }
