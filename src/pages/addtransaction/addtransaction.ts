@@ -17,24 +17,27 @@ import { HomePage } from '../home/home';
 })
 export class AddtransactionPage {
 
-   //Variables to get the value of the inputs
-   @ViewChild('concept') concept;
-   @ViewChild('amount') amount;
-   errorMessage: string;
-   payment_id;
-   transaction_type;
-   items;
-   payment_list;
-   user_id; 
+  //Variables to get the value of the inputs
+  @ViewChild('concept') concept;
+  @ViewChild('amount') amount;
+  errorMessage: string;
+  payment_mehtod: string = "Select payment method";
+  payment_id;
+  transaction_type;
+  items;
+  payment_list;
+  category_list;
+  user_id; 
 
-   //Litheral object constructor
-   transaction = {type: 0, concept : '', amount : 0, paymentId : 0, datetime: '', id: 0};
-   transaction_types: string[] = ["INCOME", "CASH WITHDRAWAL", "EXPENSE"];
-   status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
+  //Litheral object constructor
+  transaction = {type: 0, concept : '', amount : 0, paymentId : 0, datetime: '', id: 0};
+  transaction_types: string[] = ["INCOME", "CASH WITHDRAWAL", "EXPENSE"];
+  status_messages: string[] = ["Successfully registered transaction","The concept field is required", "The amount field is required", "There was a problem with the server"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private auth: AngularFireAuth, public alertCtrl: AlertController, private db: AngularFireDatabase,  private toast: ToastController) {
     this.user_id = this.auth.auth.currentUser.uid;
     this.loadPaymentMethods();
+    this.loadCategories();
     this.loadUser();
   }
 
@@ -42,6 +45,12 @@ export class AddtransactionPage {
   loadPaymentMethods(){
     this.db.list('/users/'+this.user_id+'/payment/').valueChanges().subscribe((d) => {
       this.payment_list = d;
+    });
+  }
+
+  loadCategories(){
+    this.db.list('/categories/').valueChanges().subscribe((d) => {
+      this.category_list = d;
     });
   }
 
@@ -102,6 +111,7 @@ export class AddtransactionPage {
   //Function to get the type of user (the value will change everytime a different value is selected)
   getPaymentId(id){
     this.payment_id = id;
+    this.payment_mehtod = this.payment_list[id];
   }
   //Function to get the transaction type (the value will change everytime a different value is selected)
   getTransactionType(transaction_type){
