@@ -58,8 +58,8 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
-   //To open and close the menu
-   toogleMenu(){
+  //To open and close the menu
+  toogleMenu(){
     this.menu.toggle();
   }
 

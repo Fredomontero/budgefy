@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar hideBackButton padding-horizontal	>
     <ion-buttons left>
-        <button ion-button icon-only><ion-icon name="close"></ion-icon></button>
+        <button ion-button icon-only (click)="cancelTransaction()"><ion-icon name="close"></ion-icon></button>
     </ion-buttons>
     <ion-title class="main_title">New Transaction</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only><ion-icon name="checkmark"></ion-icon></button>
+      <button ion-button icon-only (click)="finishTransaction()"><ion-icon name="checkmark"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -36,8 +36,8 @@
         <!-- This is to select the account -->
       <ion-item class="input_field">
         <ion-label>SELECT ACCOUNT</ion-label>
-        <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
-          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
+        <ion-select [(ngModel)]="sourceId" (ionChange)="getSourceId(sourceId);">
+          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getSourceId(sourceId);">
             <p >{{ method.name }}</p>
           </ion-option>
         </ion-select>
@@ -67,8 +67,8 @@
       <!-- This is for the payment method -->
       <ion-item class="input_field">
         <ion-label>SELECT PAYMENT</ion-label>
-        <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
-          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getPaymentId(id);">
+        <ion-select [(ngModel)]="sourceId" (ionChange)="getSourceId(sourceId);">
+          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getSourceId(sourceId);">
             <p >{{ method.name }}</p>
           </ion-option>
         </ion-select>
@@ -81,9 +81,9 @@
         <!-- This is for the source -->
         <ion-item class="source-account">
           <ion-label>SOURCE</ion-label>
-          <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
+          <ion-select [(ngModel)]="sourceId" (ionChange)="getSourceId(sourceId);">
             <div *ngFor="let method of payment_list">
-              <ion-option value="{{method.id}}" (ionChange)="getPaymentId(id);">
+              <ion-option value="{{method.id}}">
                 <p>{{ method.name }}</p>
               </ion-option>
             </div>
@@ -95,9 +95,9 @@
         <!-- This is for the destination -->
         <ion-item class="destination-account">
           <ion-label>DESTINATION</ion-label>
-          <ion-select [(ngModel)]="id" (ionChange)="getPaymentId(id);">
+          <ion-select [(ngModel)]="destinationId" (ionChange)="getDestinationId(destinationId);">
             <div *ngFor="let method of payment_list">
-              <ion-option value="{{method.id}}" (ionChange)="getPaymentId(id);">
+              <ion-option value="{{method.id}}">
                 <p>{{ method.name }}</p>
               </ion-option>
             </div>
