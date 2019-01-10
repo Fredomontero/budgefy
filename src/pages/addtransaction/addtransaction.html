@@ -37,7 +37,7 @@
       <ion-item class="input_field">
         <ion-label>SELECT ACCOUNT</ion-label>
         <ion-select [(ngModel)]="sourceId" (ionChange)="getSourceId(sourceId);">
-          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getSourceId(sourceId);">
+          <ion-option *ngFor="let method of payment_list" value="{{method.id}}">
             <p >{{ method.name }}</p>
           </ion-option>
         </ion-select>
@@ -57,8 +57,8 @@
       <!-- This is for the category -->
       <ion-item class="input_field">
         <ion-label>SELECT CATEGORY</ion-label>
-        <ion-select [(ngModel)]="id" (ionChange)="getCategoryId(id);">
-          <ion-option *ngFor="let category of category_list" value="{{category.id}}" (ionChange)="getCategoryId(id);">
+        <ion-select [(ngModel)]="id" (ionChange)="getCategoryId(id);" (ionChange)="getCategoryId(id);">
+          <ion-option *ngFor="let category of category_list" value="{{category.id}}">
             <p >{{ category.name }}</p>
           </ion-option>
         </ion-select>
@@ -68,7 +68,7 @@
       <ion-item class="input_field">
         <ion-label>SELECT PAYMENT</ion-label>
         <ion-select [(ngModel)]="sourceId" (ionChange)="getSourceId(sourceId);">
-          <ion-option *ngFor="let method of payment_list" value="{{method.id}}" (ionChange)="getSourceId(sourceId);">
+          <ion-option *ngFor="let method of payment_list" value="{{method.id}}">
             <p >{{ method.name }}</p>
           </ion-option>
         </ion-select>

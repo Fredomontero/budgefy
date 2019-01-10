@@ -23,6 +23,8 @@ export class AddtransactionPage {
   errorMessage: string;
   source_mehtod: string = "Select payment method";
   destination_mehtod: string = "Select payment method";
+  transfer_src_lbl: string = 'SOURCE';
+  transfer_dtn_lbl: string = 'DESTINATION';
   category: string = "";
   source_id;
   destination_id;
@@ -55,6 +57,7 @@ export class AddtransactionPage {
   loadCategories(){
     this.db.list('/categories/').valueChanges().subscribe((d) => {
       this.category_list = d;
+      console.log('The category list is: ', this.category_list);
     });
   }
 
@@ -88,30 +91,29 @@ export class AddtransactionPage {
     if( this.transaction.type == 'transfer'){
       var destinationBalance = this.payment_list[this.transaction.destinationId - 1].balance; //if type = transfer we need the destination balance
     }
-    // var cash_balance = this.payment_list[0].balance;  //The payment id is the index + 1 of the payment method in the payment_list    
-    console.log('the transaction is: ', this.transaction);
-    // this.db.object('/users/'+this.user_id+'/transactions/'+this.transaction.id+'/').set(this.transaction);  //Store the transaction in the database
-    // this.db.list('/users/').update('/'+this.user_id+'/',{num_transactions:this.transaction.id + 1});  //Update the num_transactions of the user
-    // if(this.transaction_type == 'income'){
-    //   this.setIncome(sourceBalance, transaction_amount);
-    // }else if(this.transaction_type == 'expenses'){
-    //   this.setExpense(sourceBalance, transaction_amount, cash_balance);
-    // }else{
-    //   this.setTransfer(sourceBalance, transaction_amount);      
-    // }
+    // console.log('the transaction is: ', this.transaction);
+    this.db.object('/users/'+this.user_id+'/transactions/'+this.transaction.id+'/').set(this.transaction);  //Store the transaction in the database
+    this.db.list('/users/').update('/'+this.user_id+'/',{num_transactions:this.transaction.id + 1});  //Update the num_transactions of the user
+    if(this.transaction_type == 'income'){
+      this.setIncome(sourceBalance, transaction_amount);
+    }else if(this.transaction_type == 'expenses'){
+      this.setExpense(sourceBalance, transaction_amount);
+    }else{
+      this.setTransfer(sourceBalance, destinationBalance, transaction_amount);      
+    }
   }
 
   setIncome(sourceBalance, transaction_amount){
     this.db.list('/users/').update('/'+this.user_id+'/payment/'+this.transaction.sourceId +'/',{balance: parseInt(sourceBalance) + (transaction_amount | 0)});  //Update the balance of the used payment method
   }
 
-  setExpense(sourceBalance, transaction_amount, cash_balance){
+  setExpense(sourceBalance, transaction_amount){
     this.db.list('/users/').update('/'+this.user_id+'/payment/'+this.transaction.sourceId +'/',{balance: (sourceBalance - transaction_amount)});  //Reduce the balance of the used payment method
-    this.db.list('/users/').update('/'+this.user_id+'/payment/1/',{balance: parseInt(cash_balance) + (transaction_amount | 0)});  //Increase the cash
   }
 
-  setTransfer(sourceBalance, transaction_amount){
+  setTransfer(sourceBalance, destinationBalance, transaction_amount){
     this.db.list('/users/').update('/'+this.user_id+'/payment/'+this.transaction.sourceId +'/',{balance: (sourceBalance - transaction_amount)});  //Reduce the balance of the used payment method
+    this.db.list('/users/').update('/'+this.user_id+'/payment/'+this.transaction.destinationId +'/',{balance: (sourceBalance + transaction_amount)});  //Increase the balance on the destination
   }
 
   //Setting the texfield values to the properties of our object
@@ -123,7 +125,7 @@ export class AddtransactionPage {
     transaction.amount = this.amount.value;
     if(this.transaction_type == 'expenses'){
       transaction.concept = this.concept.value;
-      transaction.category = this.category_list[this.category_id - 1].id;
+      transaction.category = this.category_id;
     }else if(this.transaction_type == 'transfer'){
       transaction.destinationId = this.payment_list[this.destination_id - 1].id;
     }
